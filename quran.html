@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quran – قرآن مجید</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f3ea;--surface:#fff;--text:#1f2a24;--muted:#4f6056;--accent:#1b7a4b;--tint:#e8f4ec;--line:#e3dccb}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101713;--surface:#18221c;--text:#eaf1ec;--muted:#a9bbaf;--accent:#4cc38a;--tint:#1c3326;--line:#27352c}}
+:root[data-theme="dark"]{--bg:#101713;--surface:#18221c;--text:#eaf1ec;--muted:#a9bbaf;--accent:#4cc38a;--tint:#1c3326;--line:#27352c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;line-height:1.5}
+header{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;gap:10px;align-items:center;z-index:5}
+header h1{font-size:18px;margin:0;flex:1}
+button,select,input{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+button{cursor:pointer}
+button.p{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+.go{display:flex;gap:8px;margin-bottom:6px}
+.go input{flex:1;min-width:0;font-size:17px}
+.hint{color:var(--muted);font-size:13px;margin:0 0 12px}
+.s{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px;cursor:pointer}
+.s:hover{border-color:var(--accent)}
+.n{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.s .m{flex:1}.s small{color:var(--muted)}
+.ar{font-family:'Amiri','Noto Naskh Arabic','Traditional Arabic',serif;font-size:22px}
+#reader{display:none}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.title{text-align:center;margin:8px 0 14px}
+.title .ar{font-size:34px}
+.faz{background:var(--tint);border:1px solid var(--accent);border-radius:14px;padding:14px 16px;margin-bottom:16px;direction:rtl;text-align:right;font-family:'Noto Naskh Arabic','Amiri',serif;font-size:19px;line-height:2}
+.faz h3{margin:0 0 6px;font-size:20px;color:var(--accent)}
+.faz .it{margin:6px 0}
+.faz small{color:var(--muted);font-family:system-ui,sans-serif;font-size:13px}
+.bism{text-align:center;font-family:'Amiri',serif;font-size:28px;margin:10px 0 20px}
+.v{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.v .ar{direction:rtl;text-align:right;font-size:var(--fs,30px);line-height:2.1}
+.v p{margin:10px 0 0;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+.v p.ur{direction:rtl;text-align:right;font-family:'Noto Naskh Arabic',serif;font-size:21px;line-height:2.1}
+.v .no{font-size:12px;color:var(--accent);font-weight:600}
+.v.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.v .top{display:flex;align-items:center;justify-content:space-between}
+.pl{padding:4px 12px;font-size:14px}
+#splash{position:fixed;inset:0;background:#0f5c37;color:#f4d56b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:50;transition:opacity .6s}
+#splash.hide{opacity:0;pointer-events:none}
+.sp-ar{font-family:'Amiri',serif;font-size:42px}
+.sp-en{letter-spacing:3px;font-size:14px;color:#fff;opacity:.85}
+.hero{display:flex;flex-direction:column;align-items:center;margin:4px 0 14px}
+.hero .t{font-family:'Amiri',serif;font-size:28px;color:var(--accent)}
+.nav{display:flex;justify-content:space-between;gap:8px;margin:16px 0 40px}
+.msg{text-align:center;color:var(--muted);padding:30px 0}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="56" fill="#1b7a4b" stroke="#d9a520" stroke-width="4"/>
+    <rect x="24" y="24" width="72" height="72" fill="none" stroke="#d9a520" stroke-width="2.5"/>
+    <rect x="24" y="24" width="72" height="72" fill="none" stroke="#d9a520" stroke-width="2.5" transform="rotate(45 60 60)"/>
+    <circle cx="60" cy="60" r="27" fill="#0f5c37" stroke="#d9a520" stroke-width="1.5"/>
+    <text x="60" y="71" text-anchor="middle" font-family="Amiri,'Noto Naskh Arabic',serif" font-size="34" font-weight="700" fill="#f4d56b">قرآن</text>
+  </symbol>
+</svg>
+<div id="splash">
+  <svg width="150" height="150"><use href="#logo"/></svg>
+  <div class="sp-ar">القرآن المجيد</div>
+  <div class="sp-en">Quran Majeed</div>
+</div>
+<header>
+  <h1 id="h">قرآن مجید</h1>
+  <button id="back" style="display:none">← List</button>
+  <button id="theme" title="Dark / light">◐</button>
+</header>
+<div class="wrap">
+  <div id="list">
+    <div class="hero"><svg width="96" height="96"><use href="#logo"/></svg><div class="t">القرآن المجید</div></div>
+    <div class="go">
+      <input id="q" placeholder="Surah number or name (e.g. 2 or Baqarah)" autocomplete="off">
+      <button id="go" class="p">Open</button>
+    </div>
+    <p class="hint">Type a number (1–114) or a name and press Open / Enter.</p>
+    <div id="items"><div class="msg">Loading...</div></div>
+  </div>
+  <div id="reader">
+    <div class="bar">
+      <select id="tr">
+        <option value="ur.jalandhry">Arabic + Urdu</option>
+        <option value="en.sahih">Arabic + English</option>
+        <option value="both">Arabic + Urdu + English</option>
+        <option value="none">Arabic only</option>
+      </select>
+      <button id="minus">A−</button><button id="plus">A+</button>
+    </div>
+    <div class="bar">
+      <select id="qari"><option value="ar.alafasy">قاری مشاری راشد العفاسی</option></select>
+      <button id="playall" class="p">▶ Play surah</button>
+      <button id="stop">■ Stop</button>
+    </div>
+    <div class="title"><div class="ar" id="sa"></div><div id="se" style="color:var(--muted)"></div></div>
+    <div id="faz"></div>
+    <div id="verses"></div>
+    <div class="nav"><button id="prev">← Previous</button><button id="next">Next →</button></div>
+  </div>
+</div>
+<script>
+const API='https://api.alquran.cloud/v1';
+const $=id=>document.getElementById(id);
+let surahs=[],cur=null,fs=30,nums=[],playing=-1;
+const players=[new Audio(),new Audio()];
+
+// Virtues (fazilat): only reports from authentic hadith collections.
+const NABI='نبی ﷺ نے فرمایا: ';
+const FAZ={
+1:[[NABI+'قرآن کی سب سے عظیم سورت «الحمد للہ رب العالمین» ہے، یہی سبع مثانی اور قرآنِ عظیم ہے۔','صحیح بخاری']],
+2:[['جس گھر میں سورۃ البقرہ پڑھی جاتی ہے شیطان اس گھر سے بھاگ جاتا ہے۔','صحیح مسلم'],['آیت الکرسی (آیت 255) قرآن کی سب سے عظیم آیت ہے۔','صحیح مسلم'],['جو رات کو سورۃ البقرہ کی آخری دو آیات پڑھ لے وہ اس کے لیے کافی ہو جاتی ہیں۔','صحیح بخاری، صحیح مسلم']],
+3:[['قیامت کے دن سورۃ البقرہ اور سورۃ آل عمران بادلوں کی طرح آئیں گی اور اپنے پڑھنے والوں کی طرف سے سفارش کریں گی۔','صحیح مسلم']],
+18:[['جس نے سورۃ الکہف کی پہلی دس آیات یاد کیں وہ دجال کے فتنے سے محفوظ رہے گا۔','صحیح مسلم'],['جو جمعہ کے دن سورۃ الکہف پڑھے، اس کے لیے دو جمعوں کے درمیان نور روشن ہو جاتا ہے۔','مستدرک حاکم']],
+32:[['نبی ﷺ سونے سے پہلے «الم تنزیل» (السجدہ) اور «تبارک الذی بیدہ الملک» (الملک) پڑھا کرتے تھے۔','جامع ترمذی']],
+67:[['قرآن میں تیس آیات کی ایک سورت ہے جو اپنے پڑھنے والے کی سفارش کرتی رہی یہاں تک کہ اسے بخش دیا گیا، وہ «تبارک الذی بیدہ الملک» ہے۔','ترمذی، ابو داؤد']],
+109:[[NABI+'«قل یا ایہا الکافرون» پڑھ کر سو جایا کرو، یہ شرک سے براءت ہے۔','ابو داؤد، ترمذی']],
+112:[['سورۃ الاخلاص قرآن کے ایک تہائی کے برابر ہے۔','صحیح بخاری']],
+113:[['سورۃ الفلق اور سورۃ الناس جیسی (پناہ مانگنے کے لیے) کوئی چیز نہیں دیکھی گئی۔','صحیح مسلم'],['نبی ﷺ ہر رات سونے سے پہلے الاخلاص، الفلق اور الناس پڑھ کر ہاتھوں پر پھونکتے اور جسم پر پھیرتے تھے۔','صحیح بخاری']],
+114:[['سورۃ الفلق اور سورۃ الناس جیسی (پناہ مانگنے کے لیے) کوئی چیز نہیں دیکھی گئی۔','صحیح مسلم'],['نبی ﷺ ہر رات سونے سے پہلے الاخلاص، الفلق اور الناس پڑھ کر ہاتھوں پر پھونکتے اور جسم پر پھیرتے تھے۔','صحیح بخاری']]
+};
+const GENERIC=['جس نے کتاب اللہ کا ایک حرف پڑھا اسے ایک نیکی ملے گی اور ہر نیکی دس گنا ہوتی ہے۔','جامع ترمذی'];
+function fazHTML(n){
+  const l=FAZ[n];
+  let h='<div class="faz"><h3>فضیلت</h3>';
+  if(l)h+=l.map(x=>`<div class="it">• ${x[0]} <small>(${x[1]})</small></div>`).join('');
+  else h+='<div class="it" style="font-size:16px;color:var(--muted)">اس سورت کی کوئی خاص فضیلت میں نے یہاں اس لیے شامل نہیں کی کہ صرف مستند احادیث لکھنا چاہتا ہوں۔ تلاوت کی عمومی فضیلت:</div>';
+  h+=`<div class="it">• ${GENERIC[0]} <small>(${GENERIC[1]})</small></div></div>`;
+  return h;
+}
+
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+function setTheme(t){document.documentElement.setAttribute('data-theme',t);store('theme',t)}
+const saved=store('theme');if(saved)setTheme(saved);
+$('theme').onclick=()=>{const d=document.documentElement.getAttribute('data-theme');const dark=d?d==='dark':matchMedia('(prefers-color-scheme:dark)').matches;setTheme(dark?'light':'dark')};
+$('tr').value=store('tr')||'ur.jalandhry';
+if($('tr').value==='')$('tr').value='ur.jalandhry';
+
+const skel=s=>s.toLowerCase().replace(/[^a-z]/g,'').replace(/[aeiouh]/g,'');
+function match(f){
+  f=f.trim().toLowerCase();
+  if(!f)return surahs;
+  if(/^\d+$/.test(f))return surahs.filter(s=>String(s.number)===f);
+  const k=skel(f);
+  return surahs.filter(s=>s.englishName.toLowerCase().includes(f)||s.englishNameTranslation.toLowerCase().includes(f)||s.name.includes(f)||(k.length>=2&&skel(s.englishName).includes(k)));
+}
+function render(f){
+  const l=match(f);
+  $('items').innerHTML=l.map(s=>`<div class="s" data-n="${s.number}"><div class="n">${s.number}</div><div class="m"><b>${s.englishName}</b><br><small>${s.englishNameTranslation} · ${s.numberOfAyahs} verses · ${s.revelationType}</small></div><div class="ar">${s.name.replace('سورة','').trim()}</div></div>`).join('')||'<div class="msg">No surah found</div>';
+}
+async function loadList(){
+  try{const r=await fetch(API+'/surah');const j=await r.json();surahs=j.data;render($('q').value)}
+  catch(e){$('items').innerHTML='<div class="msg">Could not load from the internet.<br>Open this file in Chrome with internet on.<br><br><button id="retry" class="p">Try again</button></div>';$('retry').onclick=loadList}
+}
+$('q').oninput=e=>render(e.target.value);
+async function submit(){
+  const v=$('q').value.trim();
+  if(!v)return;
+  if(!surahs.length)await loadList();
+  if(/^\d+$/.test(v)&&!(+v>=1&&+v<=114)){alert('Please enter a surah number from 1 to 114');return}
+  const l=match(v);
+  if(l.length)openSurah(l[0].number);else alert('Surah not found. Try another spelling.');
+}
+$('go').onclick=submit;
+$('q').onkeydown=e=>{if(e.key==='Enter')submit()};
+$('items').onclick=e=>{const el=e.target.closest('.s');if(el)openSurah(+el.dataset.n)};
+
+async function openSurah(n){
+  if(!surahs.length){await loadList();if(!surahs.length)return}
+  stopAudio();cur=n;$('list').style.display='none';$('reader').style.display='block';$('back').style.display='';
+  const t=$('tr').value;store('tr',t);
+  const s=surahs.find(x=>x.number===n);
+  $('h').textContent=n+'. '+s.englishName;$('sa').textContent=s.name;$('se').textContent=s.englishNameTranslation+' · '+s.numberOfAyahs+' verses';
+  $('faz').innerHTML=fazHTML(n);
+  $('prev').style.visibility=n>1?'visible':'hidden';$('next').style.visibility=n<114?'visible':'hidden';
+  $('verses').innerHTML='<div class="msg">Loading...</div>';scrollTo(0,0);
+  const eds=['quran-uthmani'];
+  if(t==='both')eds.push('ur.jalandhry','en.sahih');else if(t!=='none')eds.push(t);
+  try{
+    const r=await fetch(`${API}/surah/${n}/editions/${eds.join(',')}`);const j=await r.json();
+    const [ar,...trs]=j.data.map(d=>d.ayahs);
+    nums=ar.map(a=>a.number);
+    let html='';
+    if(n!==1&&n!==9)html+='<div class="bism">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>';
+    html+=ar.map((a,i)=>{
+      let text=a.text;
+      if(i===0&&n!==1&&n!==9&&text.startsWith('بِسْمِ'))text=text.split(' ').slice(4).join(' ');
+      const tl=trs.map((x,k)=>{const urdu=eds[k+1].startsWith('ur');return `<p class="${urdu?'ur':''}">${x[i].text}</p>`}).join('');
+      return `<div class="v"><div class="top"><div class="no">${n}:${a.numberInSurah}</div><button class="pl" data-i="${i}">▶</button></div><div class="ar">${text}</div>${tl}</div>`}).join('');
+    $('verses').innerHTML=html;
+  }catch(e){$('verses').innerHTML='<div class="msg">Could not load this surah. Check your internet.<br><br><button id="retry2" class="p">Try again</button></div>';$('retry2').onclick=()=>openSurah(n)}
+}
+
+const aurl=i=>`https://cdn.islamic.network/quran/audio/128/${$('qari').value}/${nums[i]}.mp3`;
+function load(p,i){if(i<nums.length&&p.dataset.i!==String(i)+$('qari').value){p.src=aurl(i);p.dataset.i=String(i)+$('qari').value;p.preload='auto';p.load()}}
+function stopAudio(){players.forEach(p=>{p.pause();p.removeAttribute('src');p.dataset.i=''});playing=-1;document.querySelectorAll('.v.on').forEach(e=>e.classList.remove('on'))}
+function playFrom(i){
+  if(i>=nums.length){stopAudio();return}
+  playing=i;
+  document.querySelectorAll('.v.on').forEach(e=>e.classList.remove('on'));
+  const el=document.querySelectorAll('.v')[i];if(el){el.classList.add('on');el.scrollIntoView({behavior:'smooth',block:'center'})}
+  const p=players[i%2],q=players[(i+1)%2];
+  q.pause();
+  load(p,i);
+  p.currentTime=0;
+  p.play().catch(()=>{});
+  load(q,i+1);                       // next ayah downloads while this one plays
+  for(let k=i+2;k<=i+4&&k<nums.length;k++)fetch(aurl(k),{mode:'no-cors'}).catch(()=>{}); // warm cache
+}
+players.forEach((p,idx)=>{
+  p.onended=()=>{if(playing>=0&&playing%2===idx)playFrom(playing+1)};
+  p.onerror=()=>{if(playing>=0&&p.getAttribute('src')){alert('Audio could not load. Check your internet.');stopAudio()}};
+});
+$('playall').onclick=()=>playFrom(0);
+$('stop').onclick=stopAudio;
+$('qari').onchange=()=>{const i=playing;stopAudio();if(i>=0)playFrom(i)};
+$('verses').onclick=e=>{const b=e.target.closest('.pl');if(b)playFrom(+b.dataset.i)};
+$('tr').onchange=()=>cur&&openSurah(cur);
+$('prev').onclick=()=>openSurah(cur-1);$('next').onclick=()=>openSurah(cur+1);
+$('back').onclick=()=>{stopAudio();$('reader').style.display='none';$('list').style.display='block';$('back').style.display='none';$('h').textContent='قرآن مجید'};
+function size(d){fs=Math.min(48,Math.max(22,fs+d));document.documentElement.style.setProperty('--fs',fs+'px')}
+$('plus').onclick=()=>size(3);$('minus').onclick=()=>size(-3);
+loadList();
+setTimeout(()=>$('splash').classList.add('hide'),1600);
+setTimeout(()=>$('splash').remove(),2400);
+</script>
+</body>
+</html>
